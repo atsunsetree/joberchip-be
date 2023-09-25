@@ -2,8 +2,10 @@ package kr.joberchip.core.storage;
 
 import javax.persistence.*;
 import kr.joberchip.core.space.block.ImageBlock;
+import lombok.Getter;
 
 @Entity
+@Getter
 @Table(name = "image_file_tb")
 public class ImageBlockFile {
   @Id
@@ -11,7 +13,9 @@ public class ImageBlockFile {
   @Column(name="image_file_id")
   private Long imageFileId;
 
-  @OneToOne private ImageBlock imageBlock;
+  @OneToOne
+  private ImageBlock imageBlock;
 
-  @OneToOne private AttachedFile attachedFile;
+  @OneToOne
+  private AttachedFile attachedFile;
 }
