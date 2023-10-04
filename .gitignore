@@ -393,3 +393,4 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,vim,emacs,eclipse,intellij+all,visualstudiocode,java,maven,gradle
+/api/auth-v1/build.gradle
