@@ -28,15 +28,6 @@ public class TemplateBlockController {
     return ApiResponse.success(templateBlockResponse);
   }
 
-  @PutMapping("/{blockId}")
-  public ApiResponse.Result<Object> modifyLinkBlock(
-      @PathVariable UUID pageId,
-      @PathVariable Long blockId,
-      @RequestBody TemplateBlockDTO templateBlockDTO) {
-
-    return ApiResponse.success();
-  }
-
   @DeleteMapping("/{blockId}")
   public ApiResponse.Result<Object> deleteLinkBlock(
       @PathVariable UUID pageId, @PathVariable UUID blockId) {
