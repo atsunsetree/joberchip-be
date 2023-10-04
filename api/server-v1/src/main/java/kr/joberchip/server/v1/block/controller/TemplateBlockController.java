@@ -28,7 +28,7 @@ public class TemplateBlockController {
     return ApiResponse.success(templateBlockResponse);
   }
 
-  @DeleteMapping("/{blockId}")
+  @DeleteMapping("/templateBlock/{blockId}")
   public ApiResponse.Result<Object> deleteLinkBlock(@PathVariable UUID blockId) {
 
     templateBlockService.deleteTemplateBlock(blockId);
