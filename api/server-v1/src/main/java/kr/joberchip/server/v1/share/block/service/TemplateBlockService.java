@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+import static kr.joberchip.server.v1._errors.ErrorMessage.BLOCK_NOT_FOUND;
 import static kr.joberchip.server.v1._errors.ErrorMessage.ENTITY_NOT_FOUND;
 
 @Slf4j
@@ -33,6 +34,10 @@ public class TemplateBlockService {
         return templateBlock;
     }
 
-    public void deleteTemplateBlock(UUID pageId, UUID blockId) {
+    public void deleteTemplateBlock(UUID blockId) {
+        TemplateBlock templateBlock = templateBlockRepository.findById(blockId)
+                .orElseThrow(() -> new EntityNotFoundException(BLOCK_NOT_FOUND));
+
+        templateBlockRepository.deleteById(blockId);
     }
 }

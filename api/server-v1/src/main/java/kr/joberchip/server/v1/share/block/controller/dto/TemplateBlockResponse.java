@@ -1,6 +1,5 @@
 package kr.joberchip.server.v1.share.block.controller.dto;
 
-import kr.joberchip.core.share.OnScreenLocation;
 import kr.joberchip.core.share.block.TemplateBlock;
 import kr.joberchip.server.v1.share.page.dto.response.BlockType;
 

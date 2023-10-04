@@ -14,6 +14,7 @@ public class ErrorMessage {
   public static final String NOT_EMPTY = "비어있을 수 없습니다.";
 
   public static final String ENTITY_NOT_FOUND = "해당 페이지를 찾을 수 없습니다.";
+  public static final String BLOCK_NOT_FOUND = "해당 블럭을 찾을 수 없습니다.";
 
   // 회원가입
   public static final String DUPLICATED_USERNAME = "이미 사용중인 아이디입니다.";
