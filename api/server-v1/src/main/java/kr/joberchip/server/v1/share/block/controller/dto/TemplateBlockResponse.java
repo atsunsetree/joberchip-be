@@ -17,10 +17,9 @@ public record TemplateBlockResponse(UUID objectId,
                                     Integer width,
                                     Integer height) {
 
-  public static TemplateBlockResponse of(TemplateBlock templateBlock,
+  public static TemplateBlockResponse fromEntity(TemplateBlock templateBlock,
                                          String previewURL,
-                                         String iconUrl,
-                                         OnScreenLocation onScreenLocation) {
+                                         String iconUrl) {
 
     previewURL = "static/newbie_profile_form.png";
     iconUrl = "static/template_icon_1.png";
@@ -32,10 +31,10 @@ public record TemplateBlockResponse(UUID objectId,
             templateBlock.getDescription(),
             previewURL,
             iconUrl,
-            onScreenLocation.getX(),
-            onScreenLocation.getY(),
-            onScreenLocation.getWidth(),
-            onScreenLocation.getHeight()
+            templateBlock.getX(),
+            templateBlock.getY(),
+            templateBlock.getWidth(),
+            templateBlock.getHeight()
     );
   }
 }
