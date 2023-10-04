@@ -6,23 +6,22 @@ import kr.joberchip.server.v1.block.controller.dto.TemplateBlockDTO;
 import kr.joberchip.server.v1.block.service.TemplateBlockService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/page/{pageId}/templateBlock")
+@RequestMapping("/v1/page")
 public class TemplateBlockController {
   private final TemplateBlockService templateBlockService;
 
-  @PostMapping
-  public ResponseEntity<ApiResponse.Result<Object>> createTemplateBlock(
-      @PathVariable UUID pageId, @RequestBody TemplateBlockDTO templateBlockDTO) {
+  @PostMapping("/{pageId}/templateBlock")
+  public ApiResponse.Result<Object> createTemplateBlock(
+          @PathVariable UUID pageId, @RequestBody TemplateBlockDTO templateBlockDTO) {
 
     templateBlockService.createTemplateBlock(pageId, templateBlockDTO);
 
-    return ResponseEntity.ok(ApiResponse.success());
+    return ApiResponse.success();
   }
 
   @PutMapping("/{blockId}")
