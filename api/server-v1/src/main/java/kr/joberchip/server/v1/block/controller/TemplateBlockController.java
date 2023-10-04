@@ -1,9 +1,12 @@
-package kr.joberchip.server.v1.block.controller;
+package kr.joberchip.server.v1.share.block.controller;
 
 import java.util.UUID;
+
+import kr.joberchip.core.share.block.TemplateBlock;
 import kr.joberchip.server.v1._utils.ApiResponse;
-import kr.joberchip.server.v1.block.controller.dto.TemplateBlockDTO;
-import kr.joberchip.server.v1.block.service.TemplateBlockService;
+import kr.joberchip.server.v1.share.block.controller.dto.TemplateBlockDTO;
+import kr.joberchip.server.v1.share.block.controller.dto.TemplateBlockResponse;
+import kr.joberchip.server.v1.share.block.service.TemplateBlockService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +22,10 @@ public class TemplateBlockController {
   public ApiResponse.Result<Object> createTemplateBlock(
           @PathVariable UUID pageId, @RequestBody TemplateBlockDTO templateBlockDTO) {
 
-    templateBlockService.createTemplateBlock(pageId, templateBlockDTO);
+    TemplateBlock templateBlock = templateBlockService.createTemplateBlock(pageId, templateBlockDTO);
+    TemplateBlockResponse templateBlockResponse = TemplateBlockResponse.fromEntity(templateBlock, "static/newbie_profile_form.png", "static/template_icon_1.png");
 
-    return ApiResponse.success();
+    return ApiResponse.success(templateBlockResponse);
   }
 
   @PutMapping("/{blockId}")
