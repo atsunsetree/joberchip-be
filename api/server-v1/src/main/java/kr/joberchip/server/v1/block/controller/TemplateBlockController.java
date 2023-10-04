@@ -1,34 +1,33 @@
-package kr.joberchip.server.v1.share.block.controller;
+package kr.joberchip.server.v1.block.controller;
 
 import java.util.UUID;
 
-import kr.joberchip.core.share.block.TemplateBlock;
 import kr.joberchip.server.v1._utils.ApiResponse;
-import kr.joberchip.server.v1.share.block.controller.dto.TemplateBlockDTO;
-import kr.joberchip.server.v1.share.block.controller.dto.TemplateBlockResponse;
-import kr.joberchip.server.v1.share.block.service.TemplateBlockService;
+import kr.joberchip.server.v1.block.controller.dto.BlockResponseDTO;
+import kr.joberchip.server.v1.block.controller.dto.TemplateBlockDTO;
+import kr.joberchip.server.v1.block.service.TemplateBlockService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/page")
+@RequestMapping("/v1/page/{pageId}/templateBlock")
 public class TemplateBlockController {
   private final TemplateBlockService templateBlockService;
 
-  @PostMapping("/{pageId}/templateBlock")
-  public ApiResponse.Result<Object> createTemplateBlock(
+  @PostMapping
+  public ResponseEntity<ApiResponse.Result<BlockResponseDTO>> createTemplateBlock(
           @PathVariable UUID pageId, @RequestBody TemplateBlockDTO templateBlockDTO) {
 
-    TemplateBlock templateBlock = templateBlockService.createTemplateBlock(pageId, templateBlockDTO);
-    TemplateBlockResponse templateBlockResponse = TemplateBlockResponse.fromEntity(templateBlock, "static/newbie_profile_form.png", "static/template_icon_1.png");
+    BlockResponseDTO response = templateBlockService.createTemplateBlock(pageId, templateBlockDTO);
 
-    return ApiResponse.success(templateBlockResponse);
+    return ResponseEntity.ok(ApiResponse.success(response));
   }
 
-  @DeleteMapping("/templateBlock/{blockId}")
+  @DeleteMapping("/{blockId}")
   public ApiResponse.Result<Object> deleteLinkBlock(@PathVariable UUID blockId) {
 
     templateBlockService.deleteTemplateBlock(blockId);

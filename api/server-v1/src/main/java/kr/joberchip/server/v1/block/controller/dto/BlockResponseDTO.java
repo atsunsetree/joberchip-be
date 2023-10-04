@@ -68,7 +68,7 @@ public record BlockResponseDTO(
         BlockType.TEMPLATE,
         templateBlock.getTitle(),
         templateBlock.getDescription(),
-        templateBlock.getLink(),
+        null,
         templateBlock.getX(),
         templateBlock.getY(),
         templateBlock.getW(),

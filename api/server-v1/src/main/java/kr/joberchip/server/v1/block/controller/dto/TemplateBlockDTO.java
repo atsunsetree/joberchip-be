@@ -1,6 +1,6 @@
 package kr.joberchip.server.v1.block.controller.dto;
 
-import kr.joberchip.core.share.block.TemplateBlock;
+import kr.joberchip.core.block.TemplateBlock;
 import org.springframework.web.bind.annotation.RequestParam;
 
 public record TemplateBlockDTO(@RequestParam String title,
