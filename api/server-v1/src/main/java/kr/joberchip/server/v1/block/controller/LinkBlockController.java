@@ -3,7 +3,7 @@ package kr.joberchip.server.v1.block.controller;
 import java.util.UUID;
 import kr.joberchip.server.v1._utils.ApiResponse;
 import kr.joberchip.server.v1.block.controller.dto.BlockResponseDTO;
-import kr.joberchip.server.v1.block.controller.dto.LinkBlockRequestDTO;
+import kr.joberchip.server.v1.block.controller.dto.LinkBlockDTO;
 import kr.joberchip.server.v1.block.service.LinkBlockService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,7 @@ public class LinkBlockController {
 
   @PostMapping
   public ResponseEntity<ApiResponse.Result<Object>> createLinkBlock(
-      @PathVariable UUID pageId, @RequestBody LinkBlockRequestDTO createLinkBlock) {
+      @PathVariable UUID pageId, @RequestBody LinkBlockDTO createLinkBlock) {
 
     BlockResponseDTO responseDTO = linkBlockService.createLinkBlock(pageId, createLinkBlock);
 
@@ -30,7 +30,7 @@ public class LinkBlockController {
   public ResponseEntity<ApiResponse.Result<Object>> modifyLinkBlock(
       @PathVariable UUID pageId,
       @PathVariable UUID blockId,
-      @RequestBody LinkBlockRequestDTO modifyRequestDTO) {
+      @RequestBody LinkBlockDTO modifyRequestDTO) {
 
     BlockResponseDTO responseDTO = linkBlockService.modifyLinkBlock(pageId, blockId, modifyRequestDTO);
 
