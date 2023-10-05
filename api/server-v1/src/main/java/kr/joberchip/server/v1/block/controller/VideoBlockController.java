@@ -28,15 +28,15 @@ public class VideoBlockController {
   }
 
   @PutMapping("/{blockId}")
-  public ApiResponse.Result<BlockResponseDTO> modifyVideoBlock(
+  public ResponseEntity<ApiResponse.Result<BlockResponseDTO>> modifyVideoBlock(
       @PathVariable UUID pageId,
       @PathVariable UUID blockId,
-      @RequestBody VideoBlockDTO videoBlockRequestDTO) {
+      VideoBlockDTO videoBlockRequestDTO) {
 
     BlockResponseDTO response =
         videoBlockService.modifyVideoBlock(pageId, blockId, videoBlockRequestDTO);
 
-    return ApiResponse.success(response);
+    return ResponseEntity.ok(ApiResponse.success(response));
   }
 
   @DeleteMapping("/{blockId}")
