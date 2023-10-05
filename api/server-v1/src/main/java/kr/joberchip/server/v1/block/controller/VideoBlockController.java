@@ -7,6 +7,7 @@ import kr.joberchip.server.v1.block.controller.dto.VideoBlockDTO;
 import kr.joberchip.server.v1.block.service.VideoBlockService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -18,12 +19,12 @@ public class VideoBlockController {
   private final VideoBlockService videoBlockService;
 
   @PostMapping
-  public ApiResponse.Result<BlockResponseDTO> createVideoBlock(
-      @PathVariable UUID pageId, VideoBlockDTO videoBlockRequestDTO) {
+  public ResponseEntity<ApiResponse.Result<BlockResponseDTO>> createVideoBlock(
+      @PathVariable UUID pageId, VideoBlockDTO videoBlockDTO) {
 
-    BlockResponseDTO responseDTO = videoBlockService.createVideoBlock(pageId, videoBlockRequestDTO);
+    BlockResponseDTO responseDTO = videoBlockService.createVideoBlock(pageId, videoBlockDTO);
 
-    return ApiResponse.success(responseDTO);
+    return ResponseEntity.ok(ApiResponse.success(responseDTO));
   }
 
   @PutMapping("/{blockId}")

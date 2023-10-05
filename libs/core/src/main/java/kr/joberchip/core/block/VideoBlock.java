@@ -26,10 +26,6 @@ public class VideoBlock extends BaseObject {
     this.description = description;
   }
 
-  public static VideoBlock of(String title, String description) {
-    return new VideoBlock(title, description);
-  }
-
   public static VideoBlock of(
       String title, String description, Integer x, Integer y, Integer w, Integer h, Boolean visible) {
     VideoBlock generated = new VideoBlock(title, description);
@@ -52,12 +48,13 @@ public class VideoBlock extends BaseObject {
           Integer w,
           Integer h,
           Boolean visible) {
-    VideoBlock generated = new VideoBlock(title, description);
-    generated.setX(x);
-    generated.setY(y);
-    generated.setW(w);
-    generated.setH(h);
-    generated.setVisible(visible);
-    return new VideoBlock(title, description, videoLink);
+    VideoBlock generatedLink = new VideoBlock(title, description, videoLink);
+    generatedLink.setX(x);
+    generatedLink.setY(y);
+    generatedLink.setW(w);
+    generatedLink.setH(h);
+    generatedLink.setVisible(visible);
+    return generatedLink;
   }
+
 }

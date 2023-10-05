@@ -36,7 +36,7 @@ public class VideoBlockService {
       videoBlock.setVideoLink(videoLink);
     }
 
-    videoBlockRepository.save(videoBlock);
+    videoBlock = videoBlockRepository.save(videoBlock);
 
     parentPage.addVideoBlock(videoBlock);
 
